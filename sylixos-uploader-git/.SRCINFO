@@ -1,6 +1,6 @@
 pkgbase = sylixos-uploader-git
 	pkgdesc = A command-line tool for uploading SylixOS projects via CORBA.
-	pkgver = v0.0.5.r17.21d95ba3
+	pkgver = 0.0.5.r17.21d95b
 	pkgrel = 1
 	url = https://cdn.git.acosail.cc/go-sylixos/sylixos-uploader.git
 	arch = any

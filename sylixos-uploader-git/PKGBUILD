@@ -2,7 +2,7 @@
 # Contributor: chengsiyuan <chengsiyuan@acoinfo.com>
 
 pkgname=sylixos-uploader-git
-pkgver=v0.0.5.r17.21d95ba3
+pkgver=0.0.5.r17.21d95b
 pkgrel=1
 pkgdesc='A command-line tool for uploading SylixOS projects via CORBA.'
 arch=(any)
@@ -17,9 +17,9 @@ pkgver() {
 
   # Get the version number.
   printf "%s.r%s.%s" \
-    "$(git describe --tags --abbrev=0)" \
+    "$(git describe --tag --abbrev=0 | sed 's/^v//')" \
     "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short=8 HEAD)"
+    "$(git rev-parse --short=6 HEAD)"
 }
 
 build() {

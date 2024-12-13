@@ -1,7 +1,7 @@
 # Maintainer: wangyifan <wangyifan@acoinfo.com>
 
 pkgname=ecs-git
-pkgver=v0.0.2.r7.g089b875b
+pkgver=0.0.2.r7.089b87
 pkgrel=1
 pkgdesc='A command-line tool for create SylixOS container written in go.'
 arch=(any)
@@ -14,9 +14,9 @@ sha1sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   printf "%s.r%s.%s" \
-    "$(git describe --tag --abbrev=0)" \
+    "$(git describe --tag --abbrev=0 | sed 's/^v//')" \
     "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short=8 HEAD)"
+    "$(git rev-parse --short=6 HEAD)"
 }
 
 build() {
