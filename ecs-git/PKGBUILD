@@ -1,0 +1,31 @@
+# Maintainer: wangyifan <wangyifan@acoinfo.com>
+
+pkgname=ecs-git
+pkgver=v0.0.2.r7.g089b875b
+pkgrel=1
+pkgdesc='A command-line tool for create SylixOS container written in go.'
+arch=(any)
+url='https://github.com/wyf9661/ecs'
+license=(MIT)
+provides=("${pkgname}")
+source=(git+${url}.git)
+sha1sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+  printf "%s.r%s.%s" \
+    "$(git describe --tag --abbrev=0)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short=8 HEAD)"
+}
+
+build() {
+  cd "${pkgname%-git}"
+  go build
+}
+
+package() {
+  cd "${pkgname%-git}"
+  install -Dm755 ${pkgname%-git} -t "${pkgdir}/usr/bin/"
+}
+
