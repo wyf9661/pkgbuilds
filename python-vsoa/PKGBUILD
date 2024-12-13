@@ -1,0 +1,25 @@
+# Maintainer: wangyifan <wangyifan@acoinfo.com>
+# Contributor: futongtang <futongtang@acoinfo.com>
+
+pkgname=python-vsoa
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="VSOA is the abbreviation of Vehicle SOA presented by ACOINFO"
+arch=('any')
+url="https://pypi.python.org/pypi/vsoa/"
+license=('MIT')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("vsoa-$pkgver.tar.gz::http://10.7.0.200:9000/Middleware/vsoa-$pkgver.tar.gz")
+sha1sums=('b40e5dabdf62cfc9b33de8b7ee5c1491c714baa6')
+
+build() {
+	cd "vsoa-$pkgver"
+	python -m build --wheel --no-isolation
+}
+
+package() {
+	cd "vsoa-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+}

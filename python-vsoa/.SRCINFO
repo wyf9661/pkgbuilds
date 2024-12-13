@@ -1,0 +1,16 @@
+pkgbase = python-vsoa
+	pkgdesc = VSOA is the abbreviation of Vehicle SOA presented by ACOINFO
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/vsoa/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = vsoa-1.0.1.tar.gz::http://10.7.0.200:9000/Middleware/vsoa-1.0.1.tar.gz
+	sha1sums = b40e5dabdf62cfc9b33de8b7ee5c1491c714baa6
+
+pkgname = python-vsoa
