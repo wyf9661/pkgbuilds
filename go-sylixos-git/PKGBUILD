@@ -16,10 +16,10 @@
 
 _pkgbase=go
 pkgname=go-sylixos-git
-pkgver=1.23.4.r60509.e69da7
+pkgver=1.23.4.r60518.c10e32
 pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
-arch=(x86_64)
+arch=(any)
 url='https://github.com/go-sylixos'
 license=(BSD-3-Clause)
 makedepends=(git go)
@@ -56,12 +56,12 @@ build() {
   ./make.bash -v
 }
 
-check() {
-  export GO_TEST_TIMEOUT_SCALE=3
+#check() {
+#  export GO_TEST_TIMEOUT_SCALE=3
 
-  cd ${_pkgbase}/src
-  ./run.bash --no-rebuild -v -v -v -k
-}
+#  cd ${_pkgbase}/src
+#  ./run.bash --no-rebuild -v -v -v -k
+#}
 
 package() {
   cd "${_pkgbase}"

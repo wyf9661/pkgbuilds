@@ -1,9 +1,9 @@
 pkgbase = go-sylixos-git
 	pkgdesc = Core compiler tools for the Go programming language
-	pkgver = 1.23.4.r60509.e69da7
+	pkgver = 1.23.4.r60518.c10e32
 	pkgrel = 1
 	url = https://github.com/go-sylixos
-	arch = x86_64
+	arch = any
 	license = BSD-3-Clause
 	makedepends = git
 	makedepends = go
