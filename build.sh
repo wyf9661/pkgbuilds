@@ -55,7 +55,7 @@ for subfolder in $subfolders; do
 done
 
 # 指定目标拷贝目录，这里是/srv/http，你可以根据实际需求修改
-target_copy_dir="/home/wyf/share/os/x86_64"
+target_copy_dir="/home/ivan/share/os/x86_64"
 # 执行拷贝软件包文件操作
 copy_packages "$target_copy_dir"
 
