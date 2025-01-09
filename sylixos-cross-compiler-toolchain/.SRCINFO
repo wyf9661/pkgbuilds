@@ -1,16 +1,15 @@
 pkgbase = sylixos-cross-compiler-toolchain
 	pkgdesc = cross compile toolchain to build objects running on sylixos
-	pkgver = 0.7.0
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = http://10.7.0.200:9000/RealEvo-IDE
+	url = https://armory.acoinfo.com
 	arch = x86_64
 	license = custom
+	makedepends = armory-cli
 	depends = systemd
 	options = !strip
-	source = realevo-linux-tools.tar.gz::http://10.7.0.200:9000/RealEvo-IDE/realevo-linux-tools-v0.7.0.tar.gz
-	source = sw_64-sylixos-toolchain_pub.tar.gz::http://10.7.0.200:9000/RealEvo-IDE/sw_64-sylixos-toolchain_pub.tar.gz
-	sha1sums = 3ab237d6b34f98d0c92af05e9616f0f615caa33f
-	sha1sums = e96a0056d869cec7e6094563158bec2635f47ad8
+	source = @realevo/realevo-linux-tools@1.0.0/realevo-linux-tools-v1.0.0.tar.gz::https://armory.acoinfo.com/realevo-linux-tools-v1.0.0.tar.gz
+	sha1sums = 2373368cce23e869eca6be39dcc2d3b38c968cad
 
 pkgname = sylixos-cross-compiler-toolchain
 
