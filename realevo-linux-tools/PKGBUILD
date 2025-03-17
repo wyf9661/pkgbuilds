@@ -1,0 +1,53 @@
+# Maintainer: yifwon <wyf9661 at gmail dot com>
+pkgbase=realevo-linux-tools
+pkgname=(${pkgbase}-{compiler,lcsproxy,cmake-plugins,base})
+pkgver=1.1.0
+_lcsproxy_ver=1.0.8
+_senseshield_ver=2.7.0.66418
+pkgrel=1
+pkgdesc="cross compile toolchain to build objects running on sylixos"
+arch=('x86_64')
+url="http://10.13.95.14"
+license=('custom')
+depends=('systemd')
+options=(!strip)
+source=("realevo-linux-tools-v$pkgver.deb::$url/realevo-linux-tools-v$pkgver.deb")
+sha1sums=('2b93835a35391146e412fd5ca0044e6a73e4b554')
+
+prepare() {
+    bsdtar -xf data.tar.zst
+}
+
+_install_dir="opt/${pkgbase}"
+
+package_realevo-linux-tools-compiler() {
+    install -dm755 "${pkgdir}/${_install_dir}"
+    cp -r "${srcdir}/opt/acoinfo/${pkgbase}/compiler" "${pkgdir}/${_install_dir}"
+
+    #symlinking
+    install -dm755 "${pkgdir}/usr/bin"
+    for platform in ${pkgdir}/${_install_dir}/compiler/*-toolchain; do
+        for component in $platform/bin/*; do
+            ln -sf ${component##$pkgdir} ${pkgdir}/usr/bin/
+        done
+    done
+}
+
+package_realevo-linux-tools-base() {
+    install -dm755 "${pkgdir}/${_install_dir}"
+    cp -r "${srcdir}/opt/acoinfo/${pkgbase}/pkg/base" "${pkgdir}/${_install_dir}"
+}
+
+package_realevo-linux-tools-lcsproxy() {
+    backup=("etc/lcsproxy/lcsproxy.conf")
+
+    ar x ${srcdir}/opt/acoinfo/${pkgbase}/pkg/lcsproxy-${_lcsproxy_ver}-linux-amd64.deb
+    tar --no-same-owner --no-same-permissions -xavf data.tar.gz -C ${pkgdir}
+    mv ${pkgdir}/bin ${pkgdir}/usr
+}
+
+package_realevo-linux-tools-cmake-plugins() {
+    for plugin in SylixOS.cmake SylixOS-GNU.cmake SylixOS-GNU-C.cmake SylixOS-GNU-CXX.cmake SylixOS-GNU-Fortran.cmake;do
+        install -Dm644 "${srcdir}/opt/acoinfo/${pkgbase}/config/cmake/platform/${plugin}" "${pkgdir}/usr/share/cmake/Modules/Platform/${plugin}"
+    done
+}
