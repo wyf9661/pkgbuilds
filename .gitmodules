@@ -1,0 +1,6 @@
+[submodule "genromfs-git"]
+	path = genromfs-git
+	url = https://aur.archlinux.org/genromfs-git.git
+[submodule "ncurses5-compat-libs"]
+	path = ncurses5-compat-libs
+	url = https://aur.archlinux.org/ncurses5-compat-libs.git

@@ -47,7 +47,7 @@ subfolders=$(find . -maxdepth 1 -type d | grep -v '\.$')
 
 # git clean & git pull
 
-git clean -fd && git fetch && git reset --hard origin/main
+git clean -fd && git fetch && git reset --hard origin/main && git submodule update --remote
 
 # 遍历每个子文件夹并执行构建操作
 for subfolder in $subfolders; do
