@@ -22,7 +22,7 @@ function build_package {
 # 定义函数用于查找并拷贝（使用rsync）软件包文件到指定目录
 function copy_packages {
     local target_dir="$1"
-    local packages=$(find . -name "*.pkg.tar.zst")
+    local packages=$(find . -name "*.pkg.tar.xz")
     if [ -z "$packages" ]; then
         echo "未找到任何软件包文件，无需拷贝操作。"
         return 0
