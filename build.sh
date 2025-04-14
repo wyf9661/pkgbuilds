@@ -8,7 +8,7 @@ function build_package {
         echo "开始在文件夹 $dir 中构建软件包..."
         cd "$dir" 
         # 执行makepkg -s命令
-        if makepkg -sf; then
+        if makepkg -sf --sign; then
             echo "在文件夹 $dir 中软件包构建成功！"
         else
             echo "在文件夹 $dir 中软件包构建失败，请检查相关错误信息！"
