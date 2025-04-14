@@ -59,6 +59,16 @@ function copy_packages {
     done
 }
 
+update_repo_db() {
+    local repo_dir="$1"
+    local db_name="acoinfo.db.tar.gz"
+    
+    echo "更新仓库数据库..."
+    cd "$repo_dir" || exit 1
+    repo-add "$db_name" *.pkg.tar.zst
+    echo "数据库已生成：$repo_dir/$db_name"
+}
+
 # 获取当前目录下所有子文件夹
 subfolders=$(find . -maxdepth 1 -type d | grep -v '\.$')
 
@@ -75,5 +85,5 @@ done
 target_copy_dir="/home/ivan/share/x86_64"
 # 执行拷贝软件包文件操作
 copy_packages "$target_copy_dir"
-
+update_repo_db "$target_copy_dir"
 echo "所有操作已完成。"
