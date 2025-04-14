@@ -1,20 +1,4 @@
-pkgbase = realevo-linux-tools
-	pkgdesc = cross compile toolchain to build objects running on sylixos
-	pkgver = 1.1.0
-	pkgrel = 1
-	url = http://10.13.95.14
-	arch = x86_64
-	license = custom
-	depends = systemd
-	options = !strip
-	source = realevo-linux-tools-v1.1.0.deb::http://10.13.95.14/realevo-linux-tools-v1.1.0.deb
-	sha1sums = 2b93835a35391146e412fd5ca0044e6a73e4b554
-
-pkgname = realevo-linux-tools-compiler
-
-pkgname = realevo-linux-tools-lcsproxy
-	backup = etc/lcsproxy/lcsproxy.conf
-
-pkgname = realevo-linux-tools-cmake-plugins
-
-pkgname = realevo-linux-tools-base
+/home/ivan/pkgbuilds/realevo-linux-tools/realevo-linux-tools-compiler-1.1.0-1-x86_64.pkg.tar.zst
+/home/ivan/pkgbuilds/realevo-linux-tools/realevo-linux-tools-lcsproxy-1.1.0-1-x86_64.pkg.tar.zst
+/home/ivan/pkgbuilds/realevo-linux-tools/realevo-linux-tools-cmake-plugins-1.1.0-1-x86_64.pkg.tar.zst
+/home/ivan/pkgbuilds/realevo-linux-tools/realevo-linux-tools-base-1.1.0-1-x86_64.pkg.tar.zst
