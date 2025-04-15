@@ -65,7 +65,7 @@ update_repo_db() {
     
     echo "更新仓库数据库..."
     cd "$repo_dir" || exit 1
-    repo-add "$db_name" *.pkg.tar.zst
+    repo-add "$db_name" *.pkg.tar.xz
     echo "数据库已生成：$repo_dir/$db_name"
 }
 
