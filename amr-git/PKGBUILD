@@ -1,11 +1,11 @@
 # Maintainer: wangyifan <wangyifan@acoinfo.com>
 
-pkgname=ecs-git
-pkgver=0.0.2.r7.089b87
+pkgname=amr-git
+pkgver=0.0.1.r1.ac53cc
 pkgrel=1
-pkgdesc='A command-line tool for create SylixOS container written in go.'
+pkgdesc='A simple download client of armory.'
 arch=(any)
-url='https://github.com/wyf9661/ecs'
+url='http://10.13.42.54:3000/ivan/amr'
 license=(MIT)
 provides=("${pkgname%-git}")
 source=(git+${url}.git)

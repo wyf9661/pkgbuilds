@@ -8,7 +8,7 @@ pkgdesc='A command-line tool for uploading SylixOS projects via CORBA.'
 arch=(any)
 url='https://cdn_git.acosail.cc/go-sylixos/sylixos-uploader.git'
 license=(MIT)
-provides=("${pkgname}")
+provides=("${pkgname%-git}")
 source=(git+${url})
 sha256sums=('SKIP')
 
