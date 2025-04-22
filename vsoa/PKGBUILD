@@ -20,7 +20,6 @@ package() {
     for file in "${srcdir}"/${_pkgname}/build/${CARCH}/*; do
         if [ -f "$file" ]; then
             filename=$(basename "$file")
-
             if [[ $filename == *.so ]]; then
                 install -dm755 "${pkgdir}/usr/lib"
                 install -Dm644 "$file" "${pkgdir}/usr/lib"

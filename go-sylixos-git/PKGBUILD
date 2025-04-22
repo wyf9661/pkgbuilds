@@ -16,11 +16,11 @@
 
 _pkgbase=go
 pkgname=go-sylixos-git
-pkgver=1.24rc1.r61923.125916
+pkgver=1.24.2.r30.g688efd
 pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(any)
-url='https://github.com/wyf9661'
+url='https://bgithub.xyz/wyf9661'
 license=(BSD-3-Clause)
 makedepends=(git go)
 provides=("${_pkgbase}")
@@ -40,10 +40,7 @@ prepare() {
 
 pkgver() {
   cd "${_pkgbase}"
-  printf "%s.r%s.%s" \
-    "$(awk -F'go' '{if(NR==1)print $2}' VERSION)" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short=6 HEAD)"
+	git describe --tags --abbrev=6 | sed 's/^go//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

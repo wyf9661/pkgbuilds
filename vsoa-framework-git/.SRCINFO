@@ -1,0 +1,14 @@
+pkgbase = vsoa_framework-git
+	pkgdesc = 基于 vsoa 和生产消费模型封装的 C++ 微服务框架
+	pkgver = 1.2.1.r121.ga4cdb5
+	pkgrel = 1
+	url = https://docs.acoinfo.com/vsoa/premiumdev/vsoa_framework/
+	arch = any
+	license = custom
+	makedepends = cmake
+	makedepends = ninja
+	depends = vsoa
+	source = git+ssh://git@10.7.100.21:16783/cloudnative/vsoa_framework.git
+	sha1sums = SKIP
+
+pkgname = vsoa_framework-git

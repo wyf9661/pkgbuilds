@@ -13,10 +13,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "%s.r%s.%s" \
-    "$(git describe --tag --abbrev=0 | sed 's/^v//')" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short=6 HEAD)"
+	git describe --tags --abbrev=6 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
