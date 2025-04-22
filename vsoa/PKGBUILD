@@ -1,0 +1,43 @@
+# Maintainer: yifwon <wyf9661 at gmail dot com>
+pkgname=vsoa
+_pkgname=vsoa_linux
+pkgver=1.8.1
+pkgrel=1
+pkgdesc="VSOA 是翼辉为任务关键领域量身打造的轻量微服务框架"
+arch=('x86_64' 'aarch64' 'armhf' 'x86')
+url="https://armory.acoinfo.com"
+license=('custom')
+makedepends=('amr')
+depends=('yyjson')
+DLAGENTS=("http::/usr/bin/amr %u -o %o")
+source=(${_pkgname}-devel-$pkgver-linux.tar.gz::"http://10.7.1.31/armory/v1/packages/@$pkgname/${_pkgname}-devel/v/$pkgver/p/Linux")
+sha1sums=('ef07740544eeed26abd9ddad3561285ff336f828')
+
+package() {
+
+    install -dm755 "${pkgdir}/usr"
+
+    for file in "${srcdir}"/${_pkgname}/build/${CARCH}/*; do
+        if [ -f "$file" ]; then
+            filename=$(basename "$file")
+
+            if [[ $filename == *.so ]]; then
+                install -dm755 "${pkgdir}/usr/lib"
+                install -Dm644 "$file" "${pkgdir}/usr/lib"
+            elif [[ $filename != *.ini ]]; then
+                install -dm755 "${pkgdir}/usr/bin"
+                install -Dm755 "$file" "${pkgdir}/usr/bin"
+            fi
+        fi
+    done
+
+    for file in "${srcdir}"/${_pkgname}/${pkgname}/libs/lib${pkgname}/*; do
+        if [ -f "$file" ]; then
+            filename=$(basename "$file")
+            if [[ $filename == *.h ]]; then
+                install -dm755 "${pkgdir}/usr/include"
+                install -Dm644 "$file" "${pkgdir}/usr/include"
+            fi
+        fi
+    done
+}
