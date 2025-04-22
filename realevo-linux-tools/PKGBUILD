@@ -7,14 +7,17 @@ _senseshield_ver=2.7.0.66418
 pkgrel=1
 pkgdesc="cross compile toolchain to build objects running on sylixos"
 arch=('x86_64')
-url="http://10.13.42.54"
+url="https://armory.acoinfo.com"
 license=('custom')
+makedepends=('amr')
 depends=('systemd')
 options=(!strip)
-source=("realevo-linux-tools-v$pkgver.deb::$url/realevo-linux-tools-v$pkgver.deb")
-sha1sums=('2b93835a35391146e412fd5ca0044e6a73e4b554')
+DLAGENTS=("http::/usr/bin/amr %u -o %o")
+source=($pkgbase-$pkgver-linux.zip::"http://10.7.1.31/armory/v1/packages/@realevo/$pkgbase/v/$pkgver/p/Linux")
+sha1sums=('cd0c2623f96898b51ad9378cb28261b6eb1785d0')
 
 prepare() {
+    ar x $pkgbase-v$pkgver.deb
     bsdtar -xf data.tar.zst
 }
 
