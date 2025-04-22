@@ -6,7 +6,7 @@ pkgdesc="基于 vsoa 和生产消费模型封装的 C++ 微服务框架"
 arch=('any')
 url="https://docs.acoinfo.com/vsoa/premiumdev/vsoa_framework/"
 license=('custom')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake' 'ninja' 'clang')
 depends=('vsoa')
 source=(git+ssh://git@10.7.100.21:16783/cloudnative/vsoa_framework.git)
 sha1sums=('SKIP')
@@ -20,7 +20,7 @@ build() {
     cd "$srcdir/${pkgname%-git}/src"
     mkdir -p build
     cd build
-    cmake -G Ninja -DCMAKE_CXX_FLAGS="-fPIC" ..
+    cmake -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ..
 	ninja && ninja install
 }
 

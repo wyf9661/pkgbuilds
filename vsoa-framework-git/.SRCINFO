@@ -7,6 +7,7 @@ pkgbase = vsoa_framework-git
 	license = custom
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = clang
 	depends = vsoa
 	source = git+ssh://git@10.7.100.21:16783/cloudnative/vsoa_framework.git
 	sha1sums = SKIP
