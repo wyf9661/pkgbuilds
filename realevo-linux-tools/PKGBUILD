@@ -4,6 +4,7 @@ pkgname=(${pkgbase}-{compiler,lcsproxy,cmake-plugins,base})
 pkgver=1.1.0
 _lcsproxy_ver=1.1.0
 _lcsproxy_name=realevo_license_sdk
+_prefix_path="http://10.7.1.31/armory/v1/packages/blob/@realevo"
 pkgrel=2
 pkgdesc="cross compile toolchain to build objects running on sylixos"
 arch=('x86_64')
@@ -13,15 +14,14 @@ makedepends=('amr')
 depends=('systemd')
 options=(!strip)
 DLAGENTS=("http::/usr/bin/amr %u -o %o")
-source=($pkgbase-$pkgver-linux.zip::"http://10.7.1.31/armory/v1/packages/@realevo/$pkgbase/v/$pkgver/p/Linux"
+source=($pkgbase-v$pkgver.deb::"${_prefix_path}/${pkgbase}/v/${pkgver}/$pkgbase-v$pkgver.deb"
         compile-linux.tar.gz::"http://10.13.42.54/compile-linux.tar.gz"
-        ${_lcsproxy_name}.zip::"http://10.7.1.31/armory/v1/packages/blob/@realevo/${_lcsproxy_name}/v/${_lcsproxy_ver}/linux/${_lcsproxy_name}.zip")
-sha1sums=('4c624ac94a2cb047f2b5ae1e5687b632f01d7310'
+        ${_lcsproxy_name}.zip::"${_prefix_path}/${_lcsproxy_name}/v/${_lcsproxy_ver}/linux/${_lcsproxy_name}.zip")
+sha1sums=('2b93835a35391146e412fd5ca0044e6a73e4b554'
           '7c676ad3efb8e5fb04845c00be68c1f992a9a4a3'
           '2d5d7db7d1ffa3569d7e918114d9b4a30235a165')
 
 prepare() {
-    ar x $pkgbase-v$pkgver.deb
     bsdtar -xf data.tar.zst
 }
 
