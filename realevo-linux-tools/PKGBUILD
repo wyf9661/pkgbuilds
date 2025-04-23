@@ -10,7 +10,7 @@ pkgdesc="cross compile toolchain to build objects running on sylixos"
 arch=('x86_64')
 url="https://armory.acoinfo.com"
 license=('custom')
-makedepends=('amr')
+makedepends=('amr' 'fd')
 depends=('systemd')
 options=(!strip)
 DLAGENTS=("http::/usr/bin/amr %u -o %o")
@@ -30,6 +30,11 @@ _install_dir="opt/${pkgbase}"
 package_realevo-linux-tools-compiler() {
     optdepends=('ncurses5-compat-libs: libncurses.so.5 provided for gdb')
     install -dm755 "${pkgdir}/${_install_dir}"
+
+    fd . "${srcdir}/compiler" -e h -x chmod 644 {}
+    fd . "${srcdir}/compiler" -e a -x chmod 644 {}
+    fd . "${srcdir}/compiler" -e so -x chmod 644 {}
+
     cp -r "${srcdir}/compiler" "${pkgdir}/${_install_dir}"
 
     #symlinking
