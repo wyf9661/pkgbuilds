@@ -26,6 +26,7 @@ build() {
 
 package() {
     cd "${pkgdir}"
+    install -dm755 "${pkgdir}/usr/log/"
     for file in "${srcdir}"/${pkgname%-git}/bin/*; do
         if [ -f "$file" ]; then
             install -dm755 "${pkgdir}/usr/bin/"
