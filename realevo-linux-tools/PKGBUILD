@@ -5,7 +5,7 @@ pkgver=1.1.0
 _lcsproxy_ver=1.1.0
 _lcsproxy_name=realevo_license_sdk
 _prefix_path="http://10.7.1.31/armory/v1/packages/blob/@realevo"
-pkgrel=2
+pkgrel=3
 pkgdesc="cross compile toolchain to build objects running on sylixos"
 arch=('x86_64')
 url="https://armory.acoinfo.com"
@@ -19,7 +19,7 @@ source=($pkgbase-v$pkgver.deb::"${_prefix_path}/${pkgbase}/v/${pkgver}/$pkgbase-
         ${_lcsproxy_name}.zip::"${_prefix_path}/${_lcsproxy_name}/v/${_lcsproxy_ver}/linux/${_lcsproxy_name}.zip")
 sha1sums=('2b93835a35391146e412fd5ca0044e6a73e4b554'
           '7c676ad3efb8e5fb04845c00be68c1f992a9a4a3'
-          '2d5d7db7d1ffa3569d7e918114d9b4a30235a165')
+          'cf5715e217a8ea76fc842b5751e66717590a41fe')
 
 prepare() {
     bsdtar -xf data.tar.zst
