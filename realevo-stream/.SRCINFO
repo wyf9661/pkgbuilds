@@ -1,0 +1,29 @@
+pkgbase = realevo-stream
+	pkgdesc = RealEvo-Stream 是 SylixOS 操作系统的 Linux 环境开发工具集
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://armory.acoinfo.com
+	arch = x86_64
+	license = custom
+	makedepends = amr
+	makedepends = fd
+	depends = systemd
+	options = !strip
+	source = realevo-stream-v1.2.0.deb::http://10.7.1.31/armory/v1/packages/blob/@realevo/realevo-stream/v/1.2.0/realevo-stream-v1.2.0.deb
+	source = compile-linux.tar.gz::http://10.13.42.54/compile-linux.tar.gz
+	sha1sums = 1e79e7a3866ef66291d3985bb3262bbe97deb235
+	sha1sums = 7c676ad3efb8e5fb04845c00be68c1f992a9a4a3
+
+pkgname = realevo-stream-compiler
+	optdepends = ncurses5-compat-libs: libncurses.so.5 provided for gdb
+	replaces = realevo-linux-tools-compiler
+
+pkgname = realevo-stream-lcsproxy
+	replaces = realevo-linux-tools-lcsproxy
+	backup = etc/lcsproxy/lcsproxy.conf
+
+pkgname = realevo-stream-cmake-plugins
+	replaces = realevo-linux-tools-cmake-plugins
+
+pkgname = realevo-stream-base
+	replaces = realevo-linux-tools-base

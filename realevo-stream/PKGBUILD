@@ -1,12 +1,11 @@
 # Maintainer: yifwon <wyf9661 at gmail dot com>
-pkgbase=realevo-linux-tools
+pkgbase=realevo-stream
 pkgname=(${pkgbase}-{compiler,lcsproxy,cmake-plugins,base})
-pkgver=1.1.0
-_lcsproxy_ver=1.1.0
-_lcsproxy_name=realevo_license_sdk
+pkgver=1.2.0
+_lcsproxy_ver=1.1.1
 _prefix_path="http://10.7.1.31/armory/v1/packages/blob/@realevo"
-pkgrel=3
-pkgdesc="cross compile toolchain to build objects running on sylixos"
+pkgrel=1
+pkgdesc="RealEvo-Stream 是 SylixOS 操作系统的 Linux 环境开发工具集"
 arch=('x86_64')
 url="https://armory.acoinfo.com"
 license=('custom')
@@ -15,25 +14,23 @@ depends=('systemd')
 options=(!strip)
 DLAGENTS=("http::/usr/bin/amr %u -o %o")
 source=($pkgbase-v$pkgver.deb::"${_prefix_path}/${pkgbase}/v/${pkgver}/$pkgbase-v$pkgver.deb"
-        compile-linux.tar.gz::"http://10.13.42.54/compile-linux.tar.gz"
-        ${_lcsproxy_name}.zip::"${_prefix_path}/${_lcsproxy_name}/v/${_lcsproxy_ver}/linux/${_lcsproxy_name}.zip")
-sha1sums=('2b93835a35391146e412fd5ca0044e6a73e4b554'
-          '7c676ad3efb8e5fb04845c00be68c1f992a9a4a3'
-          'cf5715e217a8ea76fc842b5751e66717590a41fe')
+        compile-linux.tar.gz::"http://10.13.42.54/compile-linux.tar.gz")
+sha1sums=('1e79e7a3866ef66291d3985bb3262bbe97deb235'
+          '7c676ad3efb8e5fb04845c00be68c1f992a9a4a3')
 
 prepare() {
     bsdtar -xf data.tar.zst
 }
 
+_source_dir="opt/acoinfo/${pkgbase}"
 _install_dir="opt/${pkgbase}"
 
-package_realevo-linux-tools-compiler() {
+package_realevo-stream-compiler() {
+    replaces=('realevo-linux-tools-compiler')
     optdepends=('ncurses5-compat-libs: libncurses.so.5 provided for gdb')
     install -dm755 "${pkgdir}/${_install_dir}"
 
-    fd . "${srcdir}/compiler" -e h -x chmod 644 {}
-    fd . "${srcdir}/compiler" -e a -x chmod 644 {}
-    fd . "${srcdir}/compiler" -e so -x chmod 644 {}
+    fd . "${srcdir}/compiler" -e h -e a -e so -t f -x chmod 644 {}
 
     cp -r "${srcdir}/compiler" "${pkgdir}/${_install_dir}"
 
@@ -46,21 +43,24 @@ package_realevo-linux-tools-compiler() {
     done
 }
 
-package_realevo-linux-tools-base() {
+package_realevo-stream-base() {
+    replaces=('realevo-linux-tools-base')
     install -dm755 "${pkgdir}/${_install_dir}"
-    cp -r "${srcdir}/opt/acoinfo/${pkgbase}/pkg/base" "${pkgdir}/${_install_dir}"
+    cp -r "${_source_dir}/pkg/base" "${pkgdir}/${_install_dir}"
 }
 
-package_realevo-linux-tools-lcsproxy() {
+package_realevo-stream-lcsproxy() {
+    replaces=('realevo-linux-tools-lcsproxy')
     backup=("etc/lcsproxy/lcsproxy.conf")
 
-    ar x ${_lcsproxy_name}/lcsproxy-1.1.1-linux-amd64.deb
+    ar x ${_source_dir}/pkg/${_lcsproxy_name}/lcsproxy-1.1.1-linux-amd64.deb
     tar --no-same-owner --no-same-permissions -xavf data.tar.gz -C ${pkgdir}
     mv ${pkgdir}/bin ${pkgdir}/usr
 }
 
-package_realevo-linux-tools-cmake-plugins() {
+package_realevo-stream-cmake-plugins() {
+    replaces=('realevo-linux-tools-cmake-plugins')
     for plugin in SylixOS.cmake SylixOS-GNU.cmake SylixOS-GNU-C.cmake SylixOS-GNU-CXX.cmake SylixOS-GNU-Fortran.cmake;do
-        install -Dm644 "${srcdir}/opt/acoinfo/${pkgbase}/config/cmake/platform/${plugin}" "${pkgdir}/usr/share/cmake/Modules/Platform/${plugin}"
+        install -Dm644 "${_source_dir}/config/cmake/platform/${plugin}" "${pkgdir}/usr/share/cmake/Modules/Platform/${plugin}"
     done
 }
