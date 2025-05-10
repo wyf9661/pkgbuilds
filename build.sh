@@ -32,7 +32,8 @@ function copy_packages {
     for package in $packages; do
         if [ -f "$package" ]; then
             # 提取软件包名称（不含版本号）
-            pkgname=$(basename "$package" | sed -E 's/-[0-9]+(\.[0-9a-zA-Z]+)*-[0-9]+-[^.]+\.pkg\.tar\.xz$//')
+            #pkgname=$(basename "$package" | sed -E 's/-[0-9]+(\.[0-9a-zA-Z]+)*-[0-9]+-[^.]+\.pkg\.tar\.xz$//')
+	    pkgname=$(basename "$package" | sed -E 's/(-[0-9a-zA-Z]+)*((-r[0-9]+\.[0-9a-f]+)|(-[0-9]+(\.[0-9a-zA-Z]+)*)|(\.[0-9a-z]+))-[0-9]+(-[^.]+)?\.pkg\.tar\.xz$//')
             
             echo "正在清理目标目录 $target_dir 中的旧版本 $pkgname..."
             # 删除目标目录中所有匹配该软件包名称的旧版本（.pkg.tar.xz 和 .sig）
@@ -74,12 +75,12 @@ subfolders=$(find . -maxdepth 1 -type d | grep -v '\.$')
 
 # git clean & git pull
 
-git clean -fd && git fetch && git reset --hard origin/main && git submodule update --remote
+#git clean -fd && git fetch && git reset --hard origin/main && git submodule update --remote
 
 # 遍历每个子文件夹并执行构建操作
-for subfolder in $subfolders; do
-    build_package "$subfolder"
-done
+#for subfolder in $subfolders; do
+#    build_package "$subfolder"
+#done
 
 # 指定目标拷贝目录，这里是/srv/http，你可以根据实际需求修改
 target_copy_dir="/home/ivan/share/x86_64"
