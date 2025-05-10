@@ -1,7 +1,7 @@
 pkgbase = vsoa
 	pkgdesc = VSOA 是翼辉为任务关键领域量身打造的轻量微服务框架
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://armory.acoinfo.com
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,6 @@ pkgbase = vsoa
 	makedepends = amr
 	depends = yyjson
 	source = vsoa_linux-devel-1.8.1-linux.tar.gz::http://10.7.1.31/armory/v1/packages/@vsoa/vsoa_linux-devel/v/1.8.1/p/Linux
-	sha1sums = ef07740544eeed26abd9ddad3561285ff336f828
+	sha1sums = c152a7a78a650b757c42c204822728dd9c036fe0
 
 pkgname = vsoa

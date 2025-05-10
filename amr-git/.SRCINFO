@@ -1,12 +1,12 @@
 pkgbase = amr-git
 	pkgdesc = A simple download client of armory.
-	pkgver = 0.0.1.r1.ac53cc
+	pkgver = 0.0.1.r1.g24303d
 	pkgrel = 1
-	url = http://10.13.42.54:3000/ivan/amr
+	url = https://github.com/wyf9661/amr
 	arch = any
 	license = MIT
 	provides = amr
-	source = git+http://10.13.42.54:3000/ivan/amr.git
+	source = git+https://github.com/wyf9661/amr.git
 	sha1sums = SKIP
 
 pkgname = amr-git

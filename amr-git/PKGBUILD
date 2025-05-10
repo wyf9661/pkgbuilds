@@ -1,11 +1,11 @@
 # Maintainer: wangyifan <wangyifan@acoinfo.com>
 
 pkgname=amr-git
-pkgver=0.0.1.r1.ac53cc
+pkgver=0.0.1.r1.g24303d
 pkgrel=1
 pkgdesc='A simple download client of armory.'
 arch=(any)
-url='http://10.13.42.54:3000/ivan/amr'
+url='https://github.com/wyf9661/amr'
 license=(MIT)
 provides=("${pkgname%-git}")
 source=(git+${url}.git)
@@ -16,13 +16,18 @@ pkgver() {
 	git describe --tags --abbrev=6 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch  --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
+}
+
 build() {
   cd "${pkgname%-git}"
-  go build
+  cargo build --release
 }
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm755 ${pkgname%-git} -t "${pkgdir}/usr/bin/"
+  install -Dm755 target/release/${pkgname%-git} -t "${pkgdir}/usr/bin/"
 }
 
