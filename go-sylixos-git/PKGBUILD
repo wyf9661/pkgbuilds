@@ -16,7 +16,7 @@
 
 _pkgbase=go
 pkgname=go-sylixos-git
-pkgver=1.24.2.r30.g688efd
+pkgver=1.25rc1.sylixos
 pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(any)
@@ -26,7 +26,7 @@ makedepends=(git go)
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 options=(!strip staticlibs)
-source=(git+${url}/${_pkgbase}.git#branch=sylixos-release-branch.go1.24)
+source=(git+${url}/${_pkgbase}.git#branch=sylixos-release-branch.go1.25)
 sha256sums=('SKIP')
 
 prepare() {
