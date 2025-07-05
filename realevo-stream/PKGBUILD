@@ -4,7 +4,7 @@ pkgname=(${pkgbase}-{compiler,lcsproxy,cmake-plugins,tools})
 pkgver=1.3.0
 _lcsproxy_ver=1.1.1
 _prefix_path="http://10.7.1.31/armory/v1/packages/blob/@realevo"
-pkgrel=1
+pkgrel=2
 pkgdesc="RealEvo-Stream 是 SylixOS 操作系统的 Linux 环境开发工具集"
 arch=('x86_64')
 url="https://armory.acoinfo.com"
@@ -14,9 +14,9 @@ depends=('systemd')
 options=(!strip)
 DLAGENTS=("http::/usr/bin/amr %u -o %o")
 source=($pkgbase-v$pkgver.deb::"${_prefix_path}/${pkgbase}/v/${pkgver}/$pkgbase-v$pkgver.deb"
-        compile-linux.tar.gz::"http://10.13.42.54/compile-linux.tar.gz")
+        compiler-pub.tar.gz::"http://10.13.42.54/compiler-pub.tar.gz")
 sha1sums=('84b012b91e1377fe2f4834d73663e5b9ee093bfd'
-          '7c676ad3efb8e5fb04845c00be68c1f992a9a4a3')
+          'da3968197e7bf67aa45a77515b52ba2710c5fc34')
 
 prepare() {
     bsdtar -xf data.tar.zst
