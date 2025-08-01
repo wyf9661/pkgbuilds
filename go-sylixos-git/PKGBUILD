@@ -20,13 +20,13 @@ pkgver=1.25rc1.sylixos
 pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(any)
-url='https://github.com/go-sylixos'
+url='https://github.com/acoinfo'
 license=(BSD-3-Clause)
 makedepends=(git go)
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 options=(!strip staticlibs)
-source=(git+${url}/${_pkgbase}.git#branch=sylixos-release-branch.go1.25)
+source=(git+${url}/${_pkgbase}.git#branch=sylixos-patch_on_go1.25)
 sha256sums=('SKIP')
 
 prepare() {
