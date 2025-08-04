@@ -1,0 +1,33 @@
+# Maintainer: wangyifan <wangyifan at acoinfo dot com>
+_pkgname="vmessenger"
+pkgname="${_pkgname}-appimage"
+pkgver=2.0.5
+pkgrel=1
+pkgdesc="VSOA Messenger（简称 vMessenger）是翼辉信息专为 VSOA 微服务开发而设计的测试仿真工具"
+arch=('x86_64' 'aarch64')
+url="http://10.7.1.31/armory/package/vsoa/${_pkgname}"
+src_url="http://10.7.1.31/armory/v1/packages/@vsoa/${_pkgname}/v/${pkgver}/p/Linux/a"
+license=('MIT')
+options=(!strip)
+depends=('zlib' 'hicolor-icon-theme' 'glibc')
+_install_path="/opt/${pkgname}"
+source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${src_url}/x86-64/vMessenger_linux_${pkgver}_x86_64.AppImage")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage:${src_url}/arm64/vMessenger_linux_${pkgver}_arm64.AppImage")
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
+
+_appimage="${pkgname}-${pkgver}-${CARCH}.AppImage"
+
+prepare() {
+    chmod a+x "${_appimage}"
+    "./${_appimage}" --appimage-extract > /dev/null
+    sed "s|AppRun|${_install_path}/vmessenger.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+}
+package() {
+    install -Dm755 "${_appimage}" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
+}
