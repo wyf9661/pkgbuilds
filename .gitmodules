@@ -4,6 +4,7 @@
 [submodule "ncurses5-compat-libs"]
 	path = ncurses5-compat-libs
 	url = https://aur.archlinux.org/ncurses5-compat-libs.git
-[submodule "ch9344-dkms-git"]
-	path = ch9344-dkms-git
-	url = https://aur.archlinux.org/ch9344-dkms-git.git
+[submodule "ch9344ser_linux-dkms-git"]
+	path = ch9344ser_linux-dkms-git
+	url = https://aur.archlinux.org/ch9344ser_linux-dkms.git
+	branch = master
