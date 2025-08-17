@@ -1,7 +1,7 @@
 pkgbase = realevo-stream
 	pkgdesc = RealEvo-Stream 是 SylixOS 操作系统的 Linux 环境开发工具集
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://armory.acoinfo.com
 	arch = x86_64
 	license = custom
