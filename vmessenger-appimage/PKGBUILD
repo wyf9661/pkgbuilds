@@ -1,7 +1,7 @@
 # Maintainer: wangyifan <wangyifan at acoinfo dot com>
 _pkgname="vmessenger"
 pkgname="${_pkgname}-appimage"
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="VSOA Messenger（简称 vMessenger）是翼辉信息专为 VSOA 微服务开发而设计的测试仿真工具"
 arch=('x86_64' 'aarch64')

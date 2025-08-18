@@ -1,6 +1,6 @@
 pkgbase = vmessenger-appimage
 	pkgdesc = VSOA Messenger（简称 vMessenger）是翼辉信息专为 VSOA 微服务开发而设计的测试仿真工具
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = http://10.7.1.31/armory/package/vsoa/vmessenger
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = vmessenger-appimage
 	depends = hicolor-icon-theme
 	depends = glibc
 	options = !strip
-	source_x86_64 = vmessenger-appimage-2.0.5-x86_64.AppImage::http://10.7.1.31/armory/v1/packages/@vsoa/vmessenger/v/2.0.5/p/Linux/a/x86-64/vMessenger_linux_2.0.5_x86_64.AppImage
+	source_x86_64 = vmessenger-appimage-2.0.6-x86_64.AppImage::http://10.7.1.31/armory/v1/packages/@vsoa/vmessenger/v/2.0.6/p/Linux/a/x86-64/vMessenger_linux_2.0.6_x86_64.AppImage
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = vmessenger-appimage-2.0.5-aarch64.AppImage:http://10.7.1.31/armory/v1/packages/@vsoa/vmessenger/v/2.0.5/p/Linux/a/arm64/vMessenger_linux_2.0.5_arm64.AppImage
+	source_aarch64 = vmessenger-appimage-2.0.6-aarch64.AppImage:http://10.7.1.31/armory/v1/packages/@vsoa/vmessenger/v/2.0.6/p/Linux/a/arm64/vMessenger_linux_2.0.6_arm64.AppImage
 	sha256sums_aarch64 = SKIP
 
 pkgname = vmessenger-appimage
